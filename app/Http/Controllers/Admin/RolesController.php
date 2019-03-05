@@ -132,8 +132,8 @@ class RolesController extends Controller
             }
             $result = DB::table('permission_role')->insert($array);
 
-            if($result) {
 
+            if($result) {
                 event(new UserPermission(Auth::id()));
                 return App::success();
             }
