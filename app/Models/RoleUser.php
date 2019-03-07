@@ -40,6 +40,6 @@ class RoleUser extends Model
 
     public function Modify($role_id)
     {
-
+        echo $role_id;die;
     }
 }
