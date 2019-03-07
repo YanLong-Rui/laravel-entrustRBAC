@@ -37,4 +37,9 @@ class RoleUser extends Model
         // 对应的model类 ， user表的主键id  role_user本地键user_id
         return $this->hasOne('App\User','id','user_id');
     }
+
+    public function Modify($role_id)
+    {
+
+    }
 }
