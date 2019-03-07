@@ -20,6 +20,7 @@ use App\Models\RoleUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use App\Events\UserPermission;
+
 class RolesController extends Controller
 {
 
