@@ -23,11 +23,7 @@ use App\Events\UserPermission;
 
 class RolesController extends Controller
 {
-
-
-
-
-    //角色列表页
+    //角色列表页 for a git test
     function index(Request $request)
     {
         if ($request->isMethod("post")) {
