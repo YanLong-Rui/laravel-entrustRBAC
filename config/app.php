@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,//验证码provider
         /*
          * Package Service Providers...
          */
@@ -224,6 +225,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+        // 验证码...
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
     ],
 
 ];

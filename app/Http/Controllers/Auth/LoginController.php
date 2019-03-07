@@ -78,6 +78,14 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password'        => 'required|string',
+            'captcha'         =>'required|captcha'
+        ]);
+    }
     /**
      * Log the user out of the application.
      *

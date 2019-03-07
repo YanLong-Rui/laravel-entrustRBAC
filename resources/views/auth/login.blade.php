@@ -58,6 +58,18 @@
                                     </span>
                 @endif
             </div>
+            <div class="form-group has-feedback">
+
+                <input type="text" placeholder="请输入验证码" class="form-control {{ $errors->has('captcha') ? ' is-invalid' : '' }}" name="captcha">
+                <a id="refresh-captcha">
+                    <img src="{{captcha_src()}}" alt="验证码" title="刷新图片" width="160" height="60" id="captcha" border="0" data-captcha-config="default">
+                    @if ($errors->has('captcha'))
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('captcha') }}</strong>
+                                    </span>
+                    @endif
+                </a>
+            </div>
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
@@ -107,6 +119,11 @@
             radioClass: 'iradio_square-blue',
             increaseArea: '20%' /* optional */
         });
+    });
+    $("#captcha").on('click',function () {
+        var captcha = $(this);
+        var url = "/captcha/"+captcha.attr('data-captcha-config')+'/?'+Math.random();
+        captcha.attr('src',url);
     });
 </script>
 </body>

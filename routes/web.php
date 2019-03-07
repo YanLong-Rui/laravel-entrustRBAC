@@ -43,6 +43,9 @@ Route::group(['middleware' => ['checkLogin','check-permission'],'namespace' => '
 
 //根据email检测用户是否已经存在
 Route::any('user/isemailexist', ['as' => 'permission_users_add', 'uses' => 'UserController@getUserByEmail']);
+Route::any('captcha/{cofig?}', function(\Mews\Captcha\Captcha $captcha,$config='default'){
+    return $captcha->create($config);
+});
 
 
 
