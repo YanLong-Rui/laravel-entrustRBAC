@@ -140,11 +140,11 @@ class RolesController extends Controller
             return App::error();
         }
 
-
         $data = Permission::instance()->orderBy('sort', 'asc')->get();
         if ($data->isEmpty()) {
             return App::error("系统中暂无权限可管理！");
         }
+
         $data    = $data->toArray();
         $getData = $this->get_attr($data);
         //获取已有操作权限ID
