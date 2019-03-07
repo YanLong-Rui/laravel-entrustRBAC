@@ -2,6 +2,7 @@
 
 return [
 
+
     'characters' => '2346789abcdefghjmnpqrtuxyzABCDEFGHJMNPQRTUXYZ',
 
     'default'   => [
