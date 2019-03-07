@@ -24,6 +24,7 @@ use App\Events\UserPermission;
 class RolesController extends Controller
 {
 
+
     //角色列表页
     function index(Request $request)
     {
