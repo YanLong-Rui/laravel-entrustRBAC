@@ -32,6 +32,7 @@ class PermissionController extends Controller
                 return App::success($render);
             }
         }
+
         return view('admin.author.permission.index');
     }
 

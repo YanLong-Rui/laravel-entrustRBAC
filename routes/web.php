@@ -54,6 +54,7 @@ Route::any('captcha/{cofig?}', function(\Mews\Captcha\Captcha $captcha,$config='
 Route::group(['middleware' => ['checkLogin','check-permission'],'namespace' => 'Admin','prefix'=>'finance'], function () {
     //财务管理
     Route::any('finance', ['as' => 'finance_finance', 'uses' => 'UserController@index']);
+    Route::any('finance/{id}/info', ['as' => 'finance_finance_info', 'uses' => 'UserController@index']);
 });
 
 Auth::routes();

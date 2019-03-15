@@ -5,6 +5,7 @@
     <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
     reserved.
 </footer>
+
 <!-- Control Sidebar 头部点击图标弹窗 start-->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->

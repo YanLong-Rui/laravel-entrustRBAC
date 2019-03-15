@@ -16,6 +16,7 @@ use App\User;
 use App\Tools\App;
 use Illuminate\Support\Facades\Hash;
 use App\Models\RoleUser;
+use \Exception;
 class UserController extends Controller
 {
 
@@ -28,7 +29,6 @@ class UserController extends Controller
             $sord = $request->input("sord");//排序方式：asc， desc
 
             $list = new User();
-
             $list = $list->skip(($page - 1) * $rows)->take($rows);
             if ($sidx) {
                 $list = $list->orderBy($sidx, $sord);
@@ -36,8 +36,8 @@ class UserController extends Controller
             $data = $list->get();
 
             $count = User::count();
-            $return["page"] = (int)$page;
-            $return["total"] = ceil($count / $rows);
+            $return["page"]    = (int)$page;
+            $return["total"]   = ceil($count / $rows);
             $return["records"] = $count;
 
             if (!$data->isEmpty()) {
@@ -46,38 +46,33 @@ class UserController extends Controller
                     $return["rows"][$k]["id"] = $v['id'];
                     $return["rows"][$k]["name"] = $v["name"];
                     $return["rows"][$k]["email"] = $v["email"];
-
                     $operations = "<button class='btn btn-info btn-edit' type='button' data-id='" . $v["id"] . "'>编辑</button>";
-                    //$operations .= "<button class='btn btn-success btn-default btn-xs btn-del' type='button' data-id='" . $v["id"] . "'>删除</button>";
-
                     $return["rows"][$k]["operations"] = $operations;
                 }
             }
-
             return response()->json($return);
         }
         return view('admin.author.index');
     }
     //用户添加
     public function add(User $User,Request $request){
-        if($request->isMethod("post")){
-            $User->name = $request->input('name');
-            $User->email = $request->input('email');
+        if ($request->isMethod("post")) {
+            $User->name     = $request->input('name');
+            $User->email    = $request->input('email');
             $User->password = Hash::make($request->input('password'));
 
             if ($User->save()) {
                 return App::success();
-            } else {
-                return App::error('添加失败');
             }
-        }else{
-            $url = $request->input('url');
+                return App::error('添加失败');
+        }
+
+            $url    = $request->input('url');
             $render = view('admin.author.add',['url'=>$url])->render();
             return App::success($render);
-        }
     }
 
-    function edit(Request $request)
+    public function edit(Request $request)
     {
         $id = $request->id;
         $user = User::find($id);

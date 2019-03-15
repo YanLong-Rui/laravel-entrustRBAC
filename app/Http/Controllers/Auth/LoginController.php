@@ -52,6 +52,7 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
+
         $this->validateLogin($request);//验证账号密码
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle

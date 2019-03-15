@@ -156,7 +156,6 @@
     @include('admin.footer')
 </div>
 <!-- ./wrapper -->
-
 <!-- 全局js -->
 @include('admin.js')
 <script src="{{ URL::asset('bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
