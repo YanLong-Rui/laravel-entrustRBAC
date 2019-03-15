@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Jobs\AlertJob;
 use \Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\Permission;
@@ -21,6 +22,13 @@ class PermissionController extends Controller
 
     public function index(Request $request)
     {
+/*
+        $job = (new AlertJob());
+        $res = $job::dispatch()->delay(30);
+        echo "<pre>";
+        var_dump($res);
+        exit;*/
+
         if ($request->isMethod("post")) {
             $items = new Permission();
             $items = $items->orderBy("sort", "asc")->get()->toArray();
