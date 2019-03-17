@@ -97,7 +97,6 @@ class PermissionController extends Controller
         $perm = new Permission;
         $data = $perm->where('parent_id', $id)->first();
         if (!empty($data->id)) {
-            //return ['code' => 1];
             return App::error("存在子级节点，不可删除");
         } else {
             $data = $perm->destroy($id);
@@ -108,9 +107,7 @@ class PermissionController extends Controller
                 } else {
                     return App::error();
                 }
-                //return ['code' => 0];
             } else {
-                //return ['code' => 2, 'message' => '删除失败'];
                 return App::error();
             }
         }
