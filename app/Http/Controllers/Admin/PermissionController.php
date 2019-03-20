@@ -93,7 +93,7 @@ class PermissionController extends Controller
      */
     public function delPerm(Request $request)
     {
-        $id = $request->id;
+        $id   = $request->id;
         $perm = new Permission;
         $data = $perm->where('parent_id', $id)->first();
         if (!empty($data->id)) {

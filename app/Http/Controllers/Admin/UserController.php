@@ -17,6 +17,7 @@ use App\Tools\App;
 use Illuminate\Support\Facades\Hash;
 use App\Models\RoleUser;
 use \Exception;
+use App\Http\Resources\User as UserResource;
 class UserController extends Controller
 {
 
