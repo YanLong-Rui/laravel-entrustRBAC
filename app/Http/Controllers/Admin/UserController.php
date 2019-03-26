@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Countries;
 use \Illuminate\Http\Request;
 use App\Models\Role;
 use App\User;
@@ -23,6 +24,15 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
+        /*$userData = new Countries();
+        $userData = $userData::find(27);
+        echo "<pre>";
+        print_r($userData->posts->toArray());
+        exit;*/
+
+
+
+
         if($request->isMethod("post")){
             $page = $request->input("page");//当前页
             $rows = $request->input("rows");//每页记录数

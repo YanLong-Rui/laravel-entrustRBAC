@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Jobs\AlertJob;
+use App\Models\PermissionRole;
 use \Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\Permission;
@@ -22,8 +23,8 @@ class PermissionController extends Controller
 
     public function index(Request $request)
     {
-/*
-        $job = (new AlertJob());
+
+        /*$job = (new AlertJob());
         $res = $job::dispatch()->delay(30);
         echo "<pre>";
         var_dump($res);
@@ -94,24 +95,19 @@ class PermissionController extends Controller
     public function delPerm(Request $request)
     {
         $id   = $request->id;
-        $perm = new Permission;
+
+        $perm = Permission::instance();
         $data = $perm->where('parent_id', $id)->first();
         if (!empty($data->id)) {
             return App::error("存在子级节点，不可删除");
-        } else {
-            $data = $perm->destroy($id);
-            if ($data) {
-                $result = DB::table('permission_role')->where("permission_id", $id)->delete();
-                if ($result !== false) {
-                    return App::success();
-                } else {
-                    return App::error();
-                }
-            } else {
-                return App::error();
-            }
         }
 
+        $data = $perm->destroy($id);
+        if ($data) {
+            $result = PermissionRole::instance()->where("permission_id", $id)->delete();
+            return $result !== false ? App::success() : App::error();
+        }
+            return App::error();
     }
 
     /**
