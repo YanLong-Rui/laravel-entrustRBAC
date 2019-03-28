@@ -24,6 +24,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
+        //模型远程一对多调用测试
         /*$userData = new Countries();
         $userData = $userData::find(27);
         echo "<pre>";
