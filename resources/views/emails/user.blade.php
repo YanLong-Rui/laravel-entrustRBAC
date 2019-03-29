@@ -7,6 +7,6 @@ The body of your message.
 验证用户
 @endcomponent
 
-Thanks,<br>
+应该用汉语!<br>
 {{ config('app.name') }}
 @endcomponent

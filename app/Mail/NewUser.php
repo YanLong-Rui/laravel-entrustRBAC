@@ -28,6 +28,7 @@ class NewUser extends Mailable
      */
     public function build()
     {
+        //This is a contract for a interface!
         return $this->markdown('emails.user');
     }
 }
