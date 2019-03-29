@@ -25,6 +25,10 @@ class UserController extends Controller
     public function index(Request $request)
     {
 
+
+
+
+        //collection tests
         /*$data = collect([
             10 => ['user' => 1, 'skill' => 1, 'roles' => ['Role_1', 'Role_3']],
             20 => ['user' => 2, 'skill' => 1, 'roles' => ['Role_1', 'Role_2']],
