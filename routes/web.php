@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+    //return new App\Mail\NewUser();
     return view('auth.login');
 });
 
@@ -36,7 +37,7 @@ Route::group(['middleware' => ['checkLogin','check-permission'],'namespace' => '
     Route::any('permission/edit', ['as' => 'permission_permission_edit', 'uses' => 'PermissionController@edit']);
 
     //用户管理
-    Route::any('users', ['as' => 'permission_users', 'uses' => 'UserController@index']);
+    //Route::any('users', ['as' => 'permission_users', 'uses' => 'UserController@index']);
     Route::any('user/add', ['as' => 'permission_users_add', 'uses' => 'UserController@add']);
     Route::any('users/{id}/edit', ['as' => 'permission_users_edit', 'uses' => 'UserController@edit']);
 });
