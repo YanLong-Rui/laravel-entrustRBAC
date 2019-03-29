@@ -1,5 +1,5 @@
 @component('mail::message')
-# Introduction
+# 这里是龙哥的专题
 
 The body of your message.
 
