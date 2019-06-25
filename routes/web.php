@@ -12,8 +12,7 @@
 */
 
 Route::get('/', function () {
-    //return new App\Mail\NewUser();
-    return view('auth.login');
+    return Auth::user() ? redirect('/home') : view('auth.login');
 });
 
 Route::group(['namespace' => 'Admin'], function () {
@@ -37,13 +36,13 @@ Route::group(['middleware' => ['checkLogin','check-permission'],'namespace' => '
     Route::any('permission/edit', ['as' => 'permission_permission_edit', 'uses' => 'PermissionController@edit']);
 
     //用户管理
-    //Route::any('users', ['as' => 'permission_users', 'uses' => 'UserController@index']);
+    Route::any('users', ['as' => 'permission_users', 'uses' => 'UserController@index']);
     Route::any('user/add', ['as' => 'permission_users_add', 'uses' => 'UserController@add']);
     Route::any('users/{id}/edit', ['as' => 'permission_users_edit', 'uses' => 'UserController@edit']);
 });
 
 //根据email检测用户是否已经存在
-Route::any('user/isemailexist', ['as' => 'permission_users_add', 'uses' => 'UserController@getUserByEmail']);
+//Route::any('user/isemailexist', ['as' => 'permission_users_add', 'uses' => 'UserController@getUserByEmail']);
 Route::any('captcha/{cofig?}', function(\Mews\Captcha\Captcha $captcha,$config='default'){
     return $captcha->create($config);
 });
@@ -62,3 +61,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::any('/logout', 'Auth\LoginController@logout');
+
+
+Route::group(array('prefix' => 'Shop', 'namespace' => 'Shop'), function(){
+    // 资源路由
+    Route::resource('article', 'ArticleController');
+});

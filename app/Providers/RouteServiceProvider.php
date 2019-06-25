@@ -38,6 +38,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+        $this->mapBusinessRoutes();
 
         //
     }
@@ -54,6 +55,22 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web_ryl.php'));
+    }
+    /**
+     * Define the "business" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapBusinessRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web_ryl.php'));
     }
 
     /**
