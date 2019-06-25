@@ -18,12 +18,21 @@ use App\Tools\App;
 use Illuminate\Support\Facades\Hash;
 use App\Models\RoleUser;
 use \Exception;
+use App\Post;
 use App\Http\Resources\User as UserResource;
+use App\Comments;
 class UserController extends Controller
 {
 
     public function index(Request $request)
     {
+
+
+        /*$post = Post::find(1);
+
+        echo "<pre>";
+        print_r($post->comments->toArray());
+        exit;*/
         //collection tests
         /*$data = collect([
             10 => ['user' => 1, 'skill' => 1, 'roles' => ['Role_1', 'Role_3']],

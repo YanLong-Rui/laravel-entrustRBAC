@@ -28,6 +28,7 @@ class HomeController extends Controller
     {
 
         $user = User::find(Auth::id());
+
         $role_ids = array_column($user->roles->toArray(),'id');//获取角色
         $permissions = PermissionRole::instance()->whereIn('role_id',$role_ids)->get()->toArray();//获取权限
         $permission_id = array_column($permissions,'permission_id');
