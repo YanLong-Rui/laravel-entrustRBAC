@@ -16,7 +16,7 @@ class FinanceController extends Controller{
 
     public function index()
     {
-        
+        echo 'sssssss';die;
     }
 
     public function canteenInfo()
